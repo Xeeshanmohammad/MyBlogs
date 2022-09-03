@@ -2,14 +2,16 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { authActions } from "../Store";
+import { authAction } from "../Store/index";
 import { useNavigate } from "react-router-dom";
 
 function Auth() {
+
   const navigate = useNavigate()
+  
 const dispath = useDispatch()
 
-  const [isSignup, setIsSignup] = useState(false);
+  const [isSignup, setIsSignup] = useState();
 
   const [input, setInput] = useState({
     name: "",
@@ -27,26 +29,26 @@ const dispath = useDispatch()
         name: input.name,
         email: input.email,
         password: input.password,
-      })
-      .catch((err) => console.log(err));
+      }).catch((err) => console.log(err));
 
     const data = await res.data;
     return data;
   };
 
-  const submitHandler = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(input);
     if (isSignup) {
-      sendRequest("signup").then(()=>dispath(authActions.login())).then(()=>navigate('/blogs')).then((data) => console.log(data));
+      sendRequest("signup").then(()=>dispath(authAction.login())).then(()=>navigate('/blogs')).then((data) => console.log(data));
     } else {
-      sendRequest().then(()=>dispath(authActions.login())).then(()=>navigate('/blogs')).then((data) => console.log(data));
+      sendRequest().then(()=>dispath(authAction.login())).then(()=>navigate('/blogs')).then((data) => console.log(data));
     }
+ 
   };
 
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={handleSubmit}>
         <Box
           maxWidth={300}
           display="flex"
@@ -98,7 +100,7 @@ const dispath = useDispatch()
             submit
           </Button>
           <Button
-            onClick={() => setIsSignup(!isSignup)}
+            onClick={() => setIsSignup(isSignup)}
             sx={{ borderRadius: 3 }}
           >
             change to {isSignup ? "Login" : "Signup"}

@@ -58,7 +58,7 @@ const isPasswordMatch = await bcrypt.compareSync(password, existingUser.password
 if(!isPasswordMatch){
    return res.status(404).json({message:"Invalid Credentials"})
 }
-return res.status(201).json({message:"Login Successful"})
+return res.status(201).json({message:"Login Successful", user:existingUser})
 
 })
 

@@ -5,15 +5,15 @@ const authSlice = createSlice({
     initialState:{isLoggedIn:false},
     reducers:{
         login(state){
-            state.isLoggedIn(true)
+            state.isLoggedIn=true
         },
         logout(state){
-            state.isLoggedIn(false)
+            state.isLoggedIn=false
         },
     },
 })
 
-export const authActions = authSlice.actions
+export const authAction = authSlice.actions
 
 export const store = configureStore({
     reducer:authSlice.reducer
