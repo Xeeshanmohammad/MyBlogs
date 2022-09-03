@@ -4,7 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-router.get("/getAllBlogs", async (req, res) => {
+router.get("/", async (req, res) => {
   let blogs;
   try {
     blogs = await Blog.find().populate('user')
@@ -64,7 +64,7 @@ router.put("/update/:id", async (req, res) => {
   }
 });
 
-router.delete("/delete/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const  id  = req.params.id;
 
   try {
@@ -79,7 +79,7 @@ router.delete("/delete/:id", async (req, res) => {
   }
 });
 
-router.get("/getBlog/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const id = req.params.id;
   let blog;
   try {

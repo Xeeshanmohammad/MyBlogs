@@ -14,8 +14,7 @@ const Blogs = () => {
   },[])
   return (
     <div>
-     {blogs && blogs.map((blog,index)=>
-     ( <Blog title={blog.title} description={blog.description} imageUrl={blog.imageUrl} userName={blog.user.name}/>))}
+     {blogs && blogs.map((blog,index)=>( <Blog title={blog.title} description={blog.description} imageUrl={blog.imageUrl} userName={blog.user.name}/>))}
      
     
     </div>

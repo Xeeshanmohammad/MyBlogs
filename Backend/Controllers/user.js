@@ -30,7 +30,7 @@ router.post('/signup', async(req,res)=>{
     return res.status(201).json({user})
 })
 
-router.get('/getAllUser', async(req,res)=>{
+router.get('/', async(req,res)=>{
     let users;
     try {
         users = await User.find()
