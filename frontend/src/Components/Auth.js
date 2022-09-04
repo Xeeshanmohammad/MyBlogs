@@ -6,7 +6,7 @@ import { authActions } from "../Store";
 import { useNavigate } from "react-router-dom";
 
 const Auth = () => {
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
   const dispath = useDispatch();
   const [inputs, setInputs] = useState({
     name: "",
@@ -41,12 +41,12 @@ const Auth = () => {
       sendRequest("signup")
         .then((data) => localStorage.setItem("userId", data.user._id))
         .then(() => dispath(authActions.login()))
-        .then(() => naviagte("/blogs"));
+        .then(() => navigate("/myBlogs"));
     } else {
       sendRequest()
         .then((data) => localStorage.setItem("userId", data.user._id))
         .then(() => dispath(authActions.login()))
-        .then(() => naviagte("/blogs"));
+        .then(() => navigate("/myBlogs"));
     }
   };
   return (

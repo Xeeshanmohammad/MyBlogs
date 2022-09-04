@@ -30,8 +30,8 @@ function App() {
             <Route path="/auth" element={<Auth />} />
           ) : (
             <>
-              <Route path="/blogs" element={<Blogs />} />
-              <Route path="/blogs/addBlog" element={<AddBlog />} />
+              <Route path="/blogs" element={<Blogs/>} />
+              <Route path="/blogs/addBlog" element={<AddBlog/>} />
               <Route path="/myBlogs" element={<UsersBlog/>} />
               <Route path="/myBlogs/:id" element={<BlogDetails />} />{" "}
             </>
